@@ -1,27 +1,20 @@
 import './bootstrap';
 
+
 import { createApp } from 'vue';
-
-// Import PrimeVue
+import App from './components/App.vue';
 import PrimeVue from 'primevue/config';
+import Aura from '@primeuix/themes/aura';
 
-// WAJIB: Import tema dari @primeuix/themes
-import '@primeuix/themes/lara/light/indigo/theme.css'; // <--- BARIS INI YANG DISESUAIKAN
+const app = createApp(App);
 
-// Import PrimeIcons
-import 'primeicons/primeicons.css';
+app.use(PrimeVue, {
+    theme: {
+        preset: Aura,
+        options: {
+            darkModeSelector: '.p-dark'
+        }
+    }
+});
 
-// (Opsional) Import komponen Vue Anda di sini
-import ExampleComponent from './components/ExampleComponent.vue';
-
-// Buat aplikasi Vue
-const app = createApp({});
-
-// Daftarkan PrimeVue sebagai plugin
-app.use(PrimeVue);
-
-// (Opsional) Daftarkan komponen Anda secara global
-app.component('example-component', ExampleComponent);
-
-// Mount aplikasi Vue ke elemen dengan id="app"
 app.mount('#app');
